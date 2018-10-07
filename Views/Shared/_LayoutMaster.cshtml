@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/AngularApp/Module.js"></script>
+
+  <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />    
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>  
+
+</head>
+<body>
+    <div>
+        @Html.Partial("_NavigationMenu")
+
+        <div ng-view></div>  
+    </div>
+</body>
+</html>

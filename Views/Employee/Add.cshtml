@@ -1,0 +1,239 @@
+﻿<script>
+    $(function () {
+        $("#DOB").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1975:2030"
+        });
+        $("#DOJ").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1975:2030"
+        });
+    });
+</script>
+
+
+<style>
+    @@import "bourbon";
+
+    body {
+        background: #eee !important;
+    }
+
+    .wrapper {
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+
+    .form-signin {
+        max-width: 75%;
+        padding: 15px 35px 45px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        .form-signin-heading, .checkbox;
+
+    {
+        margin-bottom: 30px;
+    }
+
+    .checkbox {
+        font-weight: normal;
+    }
+
+    .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        @@include box-sizing(border-box);
+        &:focus;
+
+    {
+        z-index: 2;
+    }
+
+    }
+
+    input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    }
+</style>
+
+<div class="wrapper" ng-init="getEmpById();">
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Register Employee</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Employee Detail</div>
+                    <div class="panel-body">
+                        <form name="empform" novalidate>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Name:</label>
+                                        <input type="text" class="form-control" id="txtName" name="Name" placeholder="Enter Name" ng-model="Emp.Name" required>
+                                        <span style="color: red" ng-show="(empform.Name.$dirty && empform.Name.$invalid) || showmsg">
+                                            <span ng-show="empform.Name.$error.required">Employee name is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>DOB:</label>
+                                        <input type="text" class="form-control" id="DOB" name="DOB" placeholder="Select Date" ng-model="Emp.DOB" readonly="true" required>
+                                         <span style="color: red" ng-show="(empform.DOB.$dirty && empform.DOB.$invalid) || showmsg">
+                                            <span ng-show="empform.DOB.$error.required">DOB is required.</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Gender:</label>
+                                        <select id="ddlSex" name="txtgen" class="form-control" ng-model="Emp.Gender" required>
+                                            <option value="" selected>--Select Gender--</option>
+                                            <option value="Male" selected>Male</option>
+                                            <option value="Female" selected>Female</option>
+                                        </select>
+                                         <span style="color: red" ng-show="(empform.txtgen.$dirty && empform.txtgen.$invalid) || showmsg">
+                                            <span ng-show="empform.txtgen.$error.required">Gender is required.</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Email:</label>
+                                        <input type="text" class="form-control" id="txtEmail" name="EmpEmail" placeholder="Enter Email" ng-model="Emp.Email" required>
+                                         <span style="color: red" ng-show="(empform.EmpEmail.$dirty && empform.EmpEmail.$invalid) || showmsg">
+                                            <span ng-show="empform.EmpEmail.$error.required">Email is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Mobile:</label>
+                                        <input type="text" class="form-control" id="txtMobile" name="Mobile" placeholder="Enter Mobile Number" ng-model="Emp.Mobile" required>
+                                        <span style="color: red" ng-show="(empform.Mobile.$dirty && empform.Mobile.$invalid) || showmsg">
+                                            <span ng-show="empform.Mobile.$error.required">Mobile number is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Joining Date:</label>
+                                        <input type="text" class="form-control" id="DOJ" name="JoiningDate" placeholder="Select Date" ng-model="Emp.JoiningDate" readonly="true" required>
+                                         <span style="color: red" ng-show="(empform.JoiningDate.$dirty && empform.JoiningDate.$invalid) || showmsg">
+                                            <span ng-show="empform.JoiningDate.$error.required">Joining date is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Address:</label>
+                                        <textarea rows="4" cols="5" class="form-control" id="txtAddress" name="EmpAddress" placeholder="Enter Address" ng-model="Emp.Address" required></textarea>
+                                        <span style="color: red" ng-show="(empform.EmpAddress.$dirty && empform.EmpAddress.$invalid) || showmsg">
+                                            <span ng-show="empform.EmpAddress.$error.required">Address is required.</span>
+                                        </span>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Department:</label>
+                                        <select id="ddlDepartment" class="form-control" ng-model="Emp.DepartmentID" name="EmpDepartmentID" required>    
+                                            <option value="">--Select Department--</option>                                        
+                                            <option ng-repeat="item in ddldepartments" value="{{item.Id}}" >{{item.DepartmentName}}</option>
+                                            
+                                        </select>
+                                         <span style="color: red" ng-show="(empform.EmpDepartmentID.$dirty && empform.EmpDepartmentID.$invalid) || showmsg">
+                                            <span ng-show="empform.EmpDepartmentID.$error.required">Department is required.</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Designation:</label>
+                                        <select id="ddlDesignation" class="form-control" ng-model="Emp.DesignationID" name="EmpDesignationID" required>  
+                                            <option value="">--Select Designation--</option>                                          
+                                            <option ng-repeat="x in ddldesignations" value="{{x.DesigId}}">{{x.DesignationName}}</option>
+                                            
+                                        </select>
+                                        <span style="color: red" ng-show="(empform.EmpDesignationID.$dirty && empform.EmpDesignationID.$invalid) || showmsg">
+                                            <span ng-show="empform.EmpDesignationID.$error.required">Designation is required.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" ng-click="isFormValid()">Add Employee</button> 
+                                <a href="#!/Employeelist" class="btn btn-primary" ng-show="Emp.Id>0">Back to List</a>&nbsp;&nbsp;                                  
+                                <button type="button" class="btn btn-primary" ng-click="ClearFields()">Clear</button>&nbsp;&nbsp;                            
+                                <button type="button" class="btn btn-primary" ng-click="Addemployee()" style="display:none">Submit</button>&nbsp;&nbsp;
+                            </div>
+                            <span style="display:none" >{{ formValid = empform.$valid}}</span>
+
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-0;">
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Validation fails in the page</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div ng-repeat="error in errors">
+                            <div class="alert alert-danger">
+                                <span>{{error}}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

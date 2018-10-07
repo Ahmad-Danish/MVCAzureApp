@@ -1,0 +1,171 @@
+﻿<style>
+    @@import "bourbon";
+
+    body {
+        background: #eee !important;
+    }
+
+    .wrapper {
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+
+    .form-signin {
+        max-width: 80%;
+        padding: 15px 35px 45px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        .form-signin-heading, .checkbox;
+
+    {
+        margin-bottom: 30px;
+    }
+
+    .checkbox {
+        font-weight: normal;
+    }
+
+    .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        @@include box-sizing(border-box);
+        &:focus;
+
+    {
+        z-index: 2;
+    }
+
+    }
+
+    input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    }
+</style>
+
+<div class="wrapper" ng-init="Departmentlist();">
+    <div class="form-signin">
+        <h2 class="form-signin-heading">Department List</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Department List</div>
+                    <div class="panel-body">
+                        <table st-table="display_records" st-safe-src="Departments" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3">
+                                        <input st-search placeholder="global search" class="input-sm form-control" type="search" />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-select-row="row" st-select-mode="multiple" ng-repeat="row in display_records">
+                                    <td>{{row.DepartmentName}}</td>
+                                    <td>{{row.DepartmentDesc}}</td>
+                                    <td><a href="#!/Departmentlist" ng-click='getdepartById(row.Id)' data-toggle='modal' data-target='#myModal' class="glyphicon glyphicon-edit"></a></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        <div st-pagination="" st-items-by-page="itemsByPage"></div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-0;">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Udate Department</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="depform" novalidate>
+                        <div class="form-group">
+                            <label for="email">Department Name:</label>
+                            <input type="hidden" id="Id" ng-model="Department.Id" name="Department.Id" />
+                            <input type="text" class="form-control" id="txtDepartmentName" name="depname"
+                                placeholder="Enter Department Name" style="width: 50%;" ng-model="Department.DepartmentName" required>
+                            <span style="color: red" ng-show="(depform.depname.$dirty && depform.depname.$invalid) || showmsg">
+                                <span ng-show="depform.depname.$error.required">Department name is required.</span>
+                            </span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Department Description:</label>
+
+                            <textarea rows="4" cols="10" class="form-control" id="txtDepartmentDescription" name="depdesc"
+                                placeholder="Enter Department Description" ng-model="Department.DepartmentDesc" required></textarea>
+
+                            <span style="color: red" ng-show="(depform.depdesc.$dirty && depform.depdesc.$invalid) || showmsg">
+                                <span ng-show="depform.depdesc.$error.required">Department description is required.</span>
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" ng-click="isFormValid()">Update</button>
+                            <button type="button" style="display: none" class="btn btn-danger btn-md" ng-click="AddUpdateDepartment()" style="width: 150px;">Update</button>&nbsp;&nbsp;
+                       <button type="button" class="btn btn-danger btn-md" ng-click="ClearFields()" style="width: 150px;">Clear</button>&nbsp;&nbsp;                            
+                        </div>
+                        <span style="display: none">{{ formValid = depform.$valid}}</span>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-dialog {
+        position: absolute;
+        top: 50px;
+        right: 100px;
+        bottom: 0;
+        left: 0;
+        z-index: 10040;
+        overflow: auto;
+        overflow-y: auto;
+    }
+</style>
