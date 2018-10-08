@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  @*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" /> *@ 
+  <link href="@Url.Content("~/Content/jquery-ui.css")" rel="stylesheet" />
+  <script src="@Url.Content("~/Scripts/jquery-1.12.4.js")"></script>
+  <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
+  <script src="@Url.Content("~/Scripts/bootstrap.js")"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/Scripts/angularjs.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-smarttable.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script>*@
+    
+
+   <script src="~/AngularApp/Module.js"></script>
+   <script src="~/AngularApp/DepartmentService.js"></script>
+   <script src="~/AngularApp/DepartmentController.js"></script>     
+   <script src="~/AngularApp/DesignationController.js"></script>
+   <script src="~/AngularApp/DesignationService.js"></script>
+   <script src="~/AngularApp/datepickerDirective.js"></script>
+   <script src="~/AngularApp/EmployeeController.js"></script>
+   <script src="~/AngularApp/EmployeeService.js"></script>
+  
+</head>
+<body ng-app="myApp">
+    <div>
+        @Html.Partial("_NavigationMenu")        
+        
+        <div ng-view></div>  
+    </div>
+    <div>
+        <b>This site is referencing Production Environment -- @DateTime.Now.ToShortDateString()</b>
+    </div>
+</body>
+</html>

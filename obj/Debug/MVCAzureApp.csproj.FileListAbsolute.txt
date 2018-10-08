@@ -49,7 +49,6 @@ C:\Users\Danish\source\repos\MVCAzureApp\bin\DotNetOpenAuth.AspNet.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\DotNetOpenAuth.OAuth.Consumer.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\EntityFramework.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\Microsoft.Web.WebPages.OAuth.xml
-C:\Users\Danish\source\repos\MVCAzureApp\bin\System.Web.Mvc.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\WebMatrix.Data.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\WebMatrix.WebData.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\DotNetOpenAuth.OAuth.xml
@@ -64,3 +63,5 @@ C:\Users\Danish\source\repos\MVCAzureApp\bin\System.Net.Http.Formatting.dll
 C:\Users\Danish\source\repos\MVCAzureApp\bin\System.Web.Http.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\System.Net.Http.Formatting.xml
 C:\Users\Danish\source\repos\MVCAzureApp\bin\Microsoft.Web.Helpers.dll
+C:\Users\Danish\source\repos\MVCAzureApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Danish\source\repos\MVCAzureApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml

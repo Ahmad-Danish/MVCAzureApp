@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+    @*<script src="~/Angularapp/MyApp.js"></script>*@
+
+
+
+    <script src="~/AngularApp/Test.js"></script>
+    <script src="~/AngularApp/DepartmentService.js"></script>
+
+
+    <title>Test</title>
+</head>
+<body ng-app="myApp">
+
+    <div ng-controller="Testctr" ng-init="list();" style="width: 700px; vertical-align: central; padding-left: 30px;">
+        
+
+        <table st-table="display_records" st-safe-src="departments" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr t-select-row="row" st-select-mode="multiple" ng-repeat="row in display_records">
+                    <td>{{row.Id}}</td>
+                    <td>{{row.DepartmentName}}</td>
+                    <td>{{row.DepartmentDesc}}</td>
+
+                </tr>
+            </tbody>
+            <tfoot>
+			<tr>
+				<td colspan="5" class="text-center">
+					 <div st-pagination="" st-items-by-page="itemsByPage"></div>
+				</td>
+			</tr>
+		</tfoot>
+
+        </table>
+    </div>
+</body>
+
+</html>
